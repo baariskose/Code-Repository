@@ -1,0 +1,186 @@
+{
+  "_version": "1.45.0",
+  "sap.app": {
+    "id": "com.smod.smodrepository",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.7.5",
+      "toolsId": "2f320cc8-4f52-4914-b910-5b509e4f88f1"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.109.3",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.smod.smodrepository.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "files": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "Files.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        },
+        {
+          "uri": "utils/highlight.css"
+        }
+      ],
+      "js": [
+        {
+          "uri": "libs/firebase-app.js",
+          "name": "FirebaseApp",
+          "version": "8.10.1"
+        },
+        {
+          "uri": "libs/firebase-firestore.js",
+          "name": "FirebaseFirestore",
+          "version": "8.10.1"
+        },
+        {
+          "uri": "libs/firebase-storage.js",
+          "name": "FirebaseStorage",
+          "version": "8.10.1"
+        },
+        {
+          "uri": "utils/highlight.js"
+        },
+        {
+          "uri": "utils/highlight-abap.js"
+        },
+        {
+          "uri": "libs/loadash.js",
+          "name": "loadash",
+          "version": "8.10.1"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.smod.smodrepository.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteInitialView",
+          "pattern": ":?query:",
+          "target": [
+            "TargetInitialView"
+          ]
+        },
+        {
+          "pattern": "FileView/{filePath}",
+          "name": "FileView",
+          "target": "FileView"
+        },
+        {
+          "pattern": "Detail/{path}",
+          "name": "Detail",
+          "target": "Detail"
+        },
+        {
+          "pattern": "Content/{path}",
+          "name": "Content",
+          "target": "Content"
+        }
+      ],
+      "targets": {
+        "TargetInitialView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "InitialView",
+          "viewName": "InitialView"
+        },
+        "FileView": {
+          "id": "FileView",
+          "viewName": "FileView",
+          "viewId": "FileView"
+        },
+        "Detail": {
+          "id": "Detail",
+          "viewName": "Detail",
+          "viewId": "Detail"
+        },
+        "Content": {
+          "id": "Detail",
+          "viewName": "Content",
+          "viewId": "Content"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.smod.smodrepository.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

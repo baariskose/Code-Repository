@@ -1,0 +1,27 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog title="Title">
+        <beginButton>
+            <Button text="OK" type="Emphasized" press="handleDialogOkFileButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="handleDialogCancelFileButton"/>
+        </endButton>
+        <l:VerticalLayout class="sapUiContentPadding" width="100%">
+            <l:content>
+                <f:SimpleForm id="appointmentCreateForm" editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+                    <f:content>
+                        <VBox alignItems="Center">
+                                <HBox alignItems="Center">
+                                    <Label labelFor="dialogfileName" text="File Name:" class="sapUiSmallMarginEnd"/>
+                                    <Input id="dialogfileName" value="{newAddFile>/newAddFile/name}"/>
+                                </HBox>
+                        </VBox>
+                    </f:content>
+                </f:SimpleForm>
+            </l:content>
+        </l:VerticalLayout>
+    </Dialog>
+</c:FragmentDefinition>

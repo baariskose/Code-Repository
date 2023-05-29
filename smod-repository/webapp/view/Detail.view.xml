@@ -1,0 +1,40 @@
+<mvc:View controllerName="com.smod.smodrepository.controller.Detail"
+  xmlns:mvc="sap.ui.core.mvc"
+  
+  xmlns="sap.m" displayBlock="true" height="100%" busyIndicatorDelay="0">
+  <Panel class="sapUiSmallMarginTop" headerText="Files">
+    <content>
+      <Breadcrumbs currentLocationText="" links="{breadCrumbs>/breadcrumbs}">
+        <links>
+          <Link text="{breadCrumbs>text}" target="{breadCrumbs>target}" press="onPressBreadCrumb"/>
+        </links>
+      </Breadcrumbs>
+      <List id="ShortProductList" headerText="Products" mode="SingleSelect" selectionChange="onSelectObject" items="{currProject>/currPathSourceCodes}">
+        <headerToolbar>
+          <OverflowToolbar>
+            <content>
+              <Label text="Created By:"/>
+              <Title text="{currProject>/project/createdBy}"/>
+              <ToolbarSpacer />
+              <Label text="Creation Date:"/>
+              <Text text="{ path:'currProject>/project/creationDate', 	type: 'sap.ui.model.type.DateTime',
+				                                    formatOptions: {
+					                                        pattern: 'dd MMM YYYY - HH:mm'
+				                                    }}"/>
+              <ToolbarSpacer />
+              <Button tooltip="Add Code" class="sapUiSmallMarginBegin" icon="sap-icon://add-document" text="Add Code" type="Emphasized" press=".onAddNewTxt"/>
+              <Button tooltip="Add New File" class="sapUiSmallMarginBegin" icon="sap-icon://add-folder" text="Add File" type="Emphasized" press=".onAddNewFile"/>
+              <Button tooltip="Delete" class="sapUiSmallMarginBegin" icon="sap-icon://delete" text="" type="Reject" press=".onDeleteItem"/>
+            </content>
+          </OverflowToolbar>
+        </headerToolbar>
+        <items >
+          <StandardListItem press="onPress" type="Active" title="{currProject>name}" icon="{= !${currProject>isFile} ? 'sap-icon://attachment-text-file' : 'sap-icon://folder-full' }" iconDensityAware="false" iconInset="false">
+
+          </StandardListItem>
+        </items>
+      </List>
+    </content>
+  </Panel>
+
+</mvc:View>

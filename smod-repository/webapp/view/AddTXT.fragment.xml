@@ -1,0 +1,45 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog title="Title">
+        <beginButton>
+            <Button text="OK" type="Emphasized" press="handleDialogOkButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="handleDialogCancelButton"/>
+        </endButton>
+        <l:VerticalLayout class="sapUiContentPadding" width="100%">
+            <l:content>
+                <f:SimpleForm id="appointmentCreateForm" editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+                    <f:content>
+                        <VBox alignItems="Center">
+                            <HBox width="90%" justifyContent="SpaceBetween">
+                                <HBox alignItems="Center">
+                                    <Label labelFor="dialogfileName" text="File Name:" class="sapUiSmallMarginEnd"/>
+                                    <Input id="dialogfileName" value="{newAddTXT>/newAddTXT/name}"/>
+                                </HBox>
+                                <HBox alignItems="Center">
+                                    <Label labelFor="dialogCreatedBy" text="Created By:" class="sapUiSmallMarginEnd"/>
+                                    <Input id="dialogCreatedBy" value="{newAddTXT>/newAddTXT/createdBy}"/>
+                                </HBox>
+
+                            </HBox>
+                            <VBox alignItems="Start">
+                                <HBox>
+                                    <Label text="Keywords" class="sapUiSmallMarginEnd"/>
+                                    <TextArea cols="100" height="150px" width="100%" id="dialogKeywords" value="{newAddTXT>/newAddTXT/keywords}"/>
+                                </HBox>
+                                <HBox>
+                                    <Label text="Code" class="sapUiSmallMarginEnd"/>
+                                    <TextArea  cols="100" height="500px" width="100%" id="dialogCode" value="{newAddTXT>/newAddTXT/content}"/>
+                                </HBox>
+                            </VBox>
+
+                        </VBox>
+                    </f:content>
+                </f:SimpleForm>
+            </l:content>
+        </l:VerticalLayout>
+    </Dialog>
+</c:FragmentDefinition>

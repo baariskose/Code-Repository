@@ -1,0 +1,30 @@
+<mvc:View controllerName="com.smod.smodrepository.controller.Content"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:c="com.smod.smodrepository.ui"
+    xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
+    <Page class="sapUiSmallMarginTop" showHeader="false" showFooter="false"  title="ADD CODE">
+        <content>
+          <OverflowToolbar height="50px" >
+                <Label design="Bold" text="File Name:"/>
+                <Text text="{selectedItem>/selectedItem/name}"/>
+                <ToolbarSpacer/>
+                <Button  visible="{= !${currMode>/isEditMode}}"  tooltip="Edit Mode" class="sapUiSmallMarginBegin" icon="sap-icon://request" text="Edit" type="Ghost" press=".onChangeMode"/>
+                <Button visible="{currMode>/isEditMode}" tooltip="Save" class="sapUiSmallMarginBegin" icon="sap-icon://save" text="Save" type="Emphasized" press=".onSave"/>
+                <Button visible="{= !${currMode>/isEditMode}}" tooltip="Copy" class="sapUiSmallMarginBegin" icon="sap-icon://copy" text="Copy" type="Emphasized" press=".onCopy"/>
+            </OverflowToolbar>
+            <TextArea id="textAreaId" visible="{currMode>/isEditMode}" cols="100" height="800px" width="100%" value="{selectedItem>/selectedItem/content}"/>
+            <l:VerticalLayout visible="{= !${currMode>/isEditMode}}" id="idVerticalLayout" class="sapUiContentPadding" width="100%">
+                <c:HighlightCode id="codedTetxt" code="{selectedItem>/selectedItem/content}" lang="abap">
+                    <c:layoutData>
+                        <l:SplitterLayoutData size="auto" />
+                    </c:layoutData>
+                </c:HighlightCode>
+
+            </l:VerticalLayout>
+
+        </content>
+          
+    </Page>
+</mvc:View>
